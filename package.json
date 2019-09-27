@@ -1,0 +1,34 @@
+{
+  "name": "sortingapp",
+  "version": "1.0.0",
+  "description": "This is a simple Desktop application using Electron.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-osx": "electron-packager . 'SortingDesktopApp' --electron-version 5.0.11 --platform darwin --icon ./assets/logos/logoIcon.icns --out ./dist --overwrite --prune true",
+    "build-win32": "electron-packager . 'SortingDesktopApp' --electron-version 5.0.11 --platform win32 --icon ./assets/logos/logoIcon.ico --out ./dist --overwrite",
+    "build-linux": "electron-packager . 'SortingDesktopApp' --electron-version 5.0.11 --platform linux --icon ./assets/logos/logoIcon.png --out ./dist --overwrite",
+    "build-all": "electron-packager . 'SortingDesktopApp' --electron-version 5.0.11 --platform all --icon ./assets/logos/logoIcon --out ./dist --overwrite --arch x64 --prune true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattasridhar/ElectronSortingApp.git"
+  },
+  "keywords": [
+    "Electron",
+    "Javascript"
+  ],
+  "author": "Sridhar Matta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattasridhar/ElectronSortingApp/issues"
+  },
+  "homepage": "https://github.com/mattasridhar/ElectronSortingApp#readme",
+  "dependencies": {
+    "electron": "^6.0.10"
+  },
+  "devDependencies": {
+    "electron-packager": "^14.0.6"
+  }
+}
