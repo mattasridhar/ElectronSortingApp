@@ -2,14 +2,14 @@ const electron = require('electron');
 const url = require('url');
 const path = require('path');
 
-const { app, BrowserWindow, Menu } = electron;
+const { app, BrowserWindow, Menu, ipcMain } = electron;
 
 let mainWindow, inputsWindow;
-
+app.disableHardwareAcceleration();
 //checking when app is loaded
 app.on('ready', function () {
     //create startup Window
-    mainWindow = new BrowserWindow(startUpWindowParams);   
+    mainWindow = new BrowserWindow(startUpWindowParams);
 
     // Loading the mainMenu
     loadMainMenu(Menu);
@@ -48,10 +48,16 @@ loadMainMenu = function (menu) {
 
 // load the dialog window for providing inputs to be sorted
 openInputsDialog = function (inputsWindow) {
-    // loadMainMenu(inputMenu);
     loadWindow(inputsWindow, 'inputsWindow');
     closeWindow(inputsWindow);
 }
+
+// capture the inputs sent by the ipcRenderer from the inputsWindow.js
+ipcMain.on('inputs', function (e, input) {
+    //console.log("input from InputsWindow: " + input);//gets logged in the Terminal Console
+    mainWindow.webContents.send('inputs', input);
+    inputsWindow.close();
+})
 
 // template for the Main MENU tabs
 const mainMenuTabs = [
@@ -69,17 +75,29 @@ const mainMenuTabs = [
 
             },
             {
+                label: 'Quit Application',
+                role: 'quit'
+            },
+        ],
+    },
+    {
+        label: 'Actions', submenu: [
+            {
                 label: 'Input Values',
                 accelerator: process.platform === 'darwin' ? 'Option + E' : 'Alt + E',
                 click() {
                     //create inputWindow
-                    inputsWindow = new BrowserWindow(inputsWindowParams); 
+                    inputsWindow = new BrowserWindow(inputsWindowParams);
                     openInputsDialog(inputsWindow);
                 }
             },
             {
-                label: 'Quit Application',
-                role: 'quit'
+                label: 'Clear Values',
+                accelerator: process.platform === 'darwin' ? 'Option + C' : 'Alt + C',
+                click() {
+                    //clear the contents of mainWindow
+                    mainWindow.webContents.send('clearContents');
+                }
             },
         ],
     },
@@ -100,36 +118,6 @@ const mainMenuTabs = [
         ],
     },
 ];
-
-// template for the Input Window
-const inputMenu = [{
-    label: 'File', submenu: [
-        {
-            label: 'Toggle Full Screen',
-            accelerator: process.platform === 'darwin' ? 'Cmd + F' : 'Ctrl + F',
-            role: 'toggleFullScreen'
-        },
-        {
-            label: 'Reload',
-            accelerator: process.platform === 'darwin' ? 'Cmd + R' : 'Ctrl + R',
-            role: 'reload',
-
-        },
-        {
-            label: 'Input Values',
-            accelerator: process.platform === 'darwin' ? 'Option + E' : 'Alt + E',
-            click() {
-                //create inputWindow
-                inputsWindow = new BrowserWindow(inputsWindowParams); 
-                openInputsDialog(inputsWindow);
-            }
-        },
-        {
-            label: 'Quit Application',
-            role: 'quit'
-        },
-    ],
-}];
 
 //For MAC as it populates the File Menu under the 'Electron' Tab
 if (process.platform === 'darwin') {
@@ -160,7 +148,7 @@ const startUpWindowParams = {
         nodeIntegration: true //to make the require in other JS pages work
     },
     title: 'Sorting Application',
-    titleBarStyle: 'hidden',//Hides the top bar in the Window
+    titleBarStyle: 'visible',
     width: 1280,
     height: 800,
     backgroundColor: '#e8f2fc',
@@ -173,7 +161,7 @@ const inputsWindowParams = {
         nodeIntegration: true
     },
     title: 'Enter Inputs',
-    titleBarStyle: 'visible',
+    titleBarStyle: 'hidden',//Hides the top bar in the Window
     width: 500,
     height: 300,
     backgroundColor: '#e8f2fc',

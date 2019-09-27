@@ -1,12 +1,14 @@
 const electron = require('electron');
-const { ipcRenderer } = electron;
+const { ipcRenderer } = electron;//For sending values from this js page to the main.js page
 
 const form = document.querySelector('form');
 
 //capturing Submit button event
 form.addEventListener('submit', submitInputs);
 
-function submitInputs(e){
+function submitInputs(e) {
     e.preventDefault();
-    console.log("Submit clicked");
+    const inputsText = document.querySelector('#inputsText').value;
+    // console.log("Submit Inputs value: " + inputsText);//gets logged in the browser console
+    ipcRenderer.send('inputs', inputsText);
 }
