@@ -1,14 +1,45 @@
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
+[data-theme^="light"],
+[data-theme] [data-theme^="light"] {
+  --main-color: #000;
+  --background-color: #fff;
+  --box-color: lightgrey;
+}
+
+[data-theme^="dark"],
+[data-theme] [data-theme^="dark"],
+[data-theme="light-dark-sidebar"] nav {
+  --blue-color: #1da1f2;
+  --main-color: #fff;
+  --background-color: #000;
+  --sidebar-color: #333;
+  --box-color: grey;
+}
+
+body {
+  color: var(--main-color);
+  font-family: sans-serif;
+  background-color: var(--background-color);
+  margin-left: 10em;
+}
+
+.w3-container .w3-round-large{
+  background: red;
+}
+
+.error-container{
+  background: #f02b2b;
+}
+
+nav {
+  color: var(--main-color);
+  padding: 2em;
+  background-color: var(--sidebar-color);
+  border-right: 1px solid #000;
+}
 
 nav ul a,
 nav .brand-logo {
-  color: #444;
+  color: var(--main-color);
 }
 
 p {

@@ -2,10 +2,11 @@ const electron = require('electron');
 const url = require('url');
 const path = require('path');
 
-const { app, BrowserWindow, Menu, ipcMain } = electron;
+const { app, BrowserWindow, Menu, ipcMain, ipcRenderer } = electron;
 
 let mainWindow, inputsWindow;
 app.disableHardwareAcceleration();
+
 //checking when app is loaded
 app.on('ready', function () {
     //create startup Window
@@ -57,6 +58,10 @@ ipcMain.on('inputs', function (e, input) {
     //console.log("input from InputsWindow: " + input);//gets logged in the Terminal Console
     mainWindow.webContents.send('inputs', input);
     inputsWindow.close();
+});
+ipcMain.on('sortAlgo', function (e, algo) {
+    console.log("SortAlgo frm main: " + algo);//gets logged in the Terminal Console
+    mainWindow.webContents.send('sortAlgo', algo);
 })
 
 // template for the Main MENU tabs
@@ -107,7 +112,7 @@ const mainMenuTabs = [
                 label: 'Insertion Sort',
                 accelerator: process.platform === 'darwin' ? 'Cmd + ;' : 'Ctrl + ;',
                 click() {
-                    insertionSort();
+                    insertionSort();                    
                 }
             },
             { label: 'Selection Sort' },
@@ -172,4 +177,6 @@ const inputsWindowParams = {
 // take an input of array ans sorts them using insertion Sorting algorithm
 insertionSort = function () {
     console.log("SRI in Insertion Sort");
+    // const { ipcRenderer } = electron;
+    mainWindow.webContents.send('sortAlgo', "Algos");
 }

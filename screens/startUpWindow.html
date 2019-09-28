@@ -3,32 +3,51 @@
 <html lang="en">
 
 <head>
+  <script>
+    document.documentElement.setAttribute(
+      'data-theme',
+      localStorage.theme || 'dark'
+    )
+  </script>
   <meta charset="utf-8">
-  <title>Electron App</title>
-  <style>
-    ::selection {
-      background: #fff;
-    }
-  </style>
-
-  <!-- Compiled and minified CSS -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
-  <link type="text/css" rel="stylesheet" href="../assets/css/materialize.min.css" media="screen,projection" />
-
-
+  <link type="text/css" rel="stylesheet" href="../assets/css/style.css" media="screen,projection" />
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 </head>
 
 <body>
-  <!--JavaScript at end of body for optimized loading-->
-  <script type="text/javascript" src="js/materialize.min.js"></script>
   <nav>
     <div class="nav-wrapper">
       <a class="brand-logo center">Electron Sorting App</a>
+      <h1>Electron App</h1>
     </div>
   </nav>
-  <h1>Electron App</h1>
+  <div class="error-container" id="errorArea">
+  </div>
+
+  <div class="w3-container">
+
+    <h2>Dynamic Progress Bar with Labels</h2>
+    <p>Centered label:</p>
+
+    <div class="w3-light-grey" id="dataBars">
+      <!-- All the numerically sorted bars goes here -->
+    </div>
+    <br>
+    <button class="btn-success" onclick="move(37)">Click Me</button>
+  </div>
+
+  <div class="w3-container w3-red">
+    <h5>Footer</h5>
+    <p>
+      Set theme:
+      <button data-set-theme="dark">Dark</button>
+      <button data-set-theme="light">Light</button>
+      <button data-set-theme="light-dark-sidebar">Light (dark sidebar)</button>
+    </p>
+  </div>
   <ul></ul>
   <script src="../src/sortValueDisplay.js"></script>
+
 </body>
 
 </html>

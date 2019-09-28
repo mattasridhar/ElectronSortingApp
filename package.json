@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/mattasridhar/ElectronSortingApp#readme",
   "dependencies": {
-    "electron": "^6.0.10"
+    "electron": "^6.0.10",
+    "jquery": "^3.4.1"
   },
   "devDependencies": {
     "electron-packager": "^14.0.6"
