@@ -24,6 +24,7 @@ document.addEventListener('click', (e) => {
 // Receive the items that are sent by the main.js which it received from inputsHandler.js
 ipcRenderer.on("sortAlgo", function (e, algo) {
     console.log("srtDisp sortAlgo: " + algo)
+    sortAlgo = algo;
 });
 
 // Receive the Algorithm that are selectd by the main.js
@@ -65,7 +66,7 @@ processInputs = function (inputs) {
     }
 }
 
-
+applyAgorithm = function(){}
 
 showErrorMessage = function (showError) {
     const errorText = document.createElement('h2');
