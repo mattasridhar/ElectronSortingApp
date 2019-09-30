@@ -13,12 +13,6 @@ INTRODUCTION\
 	This sorting desktop application is built using Electron and NodeJs.
 	<br><br>
 
-<b>Check out this video to see the demo of our Sorting Desktop Application.</b>
-
-[![](http://img.youtube.com/vi/MmqxeNufGok/0.jpg)](https://www.youtube.com/watch?v=MmqxeNufGok)
-<pre><i>If the above video doesn't seem to work, you can find the same clip of Demo at (~/readme_figs/DemoVideos/ElectronSortingDemo.mp4) location.</i></pre>
-<br>
-
 SPECIFICATIONS\
 	<pre>A desktop application that takes a series of comma seperated numerical values:</pre>
 		<ul>
