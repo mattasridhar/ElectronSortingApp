@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-osx": "electron-packager . 'SortingDesktopApp' --electron-version 5.0.11 --platform darwin --icon ./assets/logos/logoIcon.icns --out ./dist --overwrite --prune true",
+    "build-osx": "electron-packager . 'SortingDesktopApp' --electron-version 5.0.11 --platform darwin --arch=x64 --icon ./assets/logos/logoIcon.icns --out ./dist --overwrite --prune=true",
     "build-win32": "electron-packager . 'SortingDesktopApp' --electron-version 5.0.11 --platform win32 --icon ./assets/logos/logoIcon.ico --out ./dist --overwrite",
     "build-linux": "electron-packager . 'SortingDesktopApp' --electron-version 5.0.11 --platform linux --icon ./assets/logos/logoIcon.png --out ./dist --overwrite",
     "build-all": "electron-packager . 'SortingDesktopApp' --electron-version 5.0.11 --platform all --icon ./assets/logos/logoIcon --out ./dist --overwrite --arch x64 --prune true"
@@ -26,10 +26,10 @@
   },
   "homepage": "https://github.com/mattasridhar/ElectronSortingApp#readme",
   "dependencies": {
-    "electron": "^6.0.10",
     "jquery": "^3.4.1"
   },
   "devDependencies": {
+    "electron": "^6.0.10",
     "electron-packager": "^14.0.6"
   }
 }

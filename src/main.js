@@ -112,14 +112,44 @@ const mainMenuTabs = [
                 label: 'Insertion Sort',
                 accelerator: process.platform === 'darwin' ? 'Cmd + ;' : 'Ctrl + ;',
                 click() {
-                    insertionSort();                    
+                    mainWindow.webContents.send('sortAlgo', 'insertionSort');
                 }
             },
-            { label: 'Selection Sort' },
-            { label: 'Bubble Sort' },
-            { label: 'Merge Sort' },
-            { label: 'Quick Sort' },
-            { label: 'Heap Sort' },
+            {
+                label: 'Selection Sort',
+                accelerator: process.platform === 'darwin' ? 'Cmd + .' : 'Ctrl + .',
+                click() {
+                    mainWindow.webContents.send('sortAlgo', 'selectionSort');
+                }
+            },
+            {
+                label: 'Bubble Sort',
+                accelerator: process.platform === 'darwin' ? 'Cmd + ,' : 'Ctrl + ,',
+                click() {
+                    mainWindow.webContents.send('sortAlgo', 'bubbleSort');
+                }
+            },
+            {
+                label: 'Merge Sort',
+                accelerator: process.platform === 'darwin' ? 'Cmd + /' : 'Ctrl + /',
+                click() {
+                    mainWindow.webContents.send('sortAlgo', 'mergeSort');
+                }
+            },
+            {
+                label: 'Quick Sort',
+                accelerator: process.platform === 'darwin' ? 'Cmd + [' : 'Ctrl + [',
+                click() {
+                    mainWindow.webContents.send('sortAlgo', 'quickSort');
+                }
+            },
+            {
+                label: 'Heap Sort',
+                accelerator: process.platform === 'darwin' ? 'Cmd + ]' : 'Ctrl + ]',
+                click() {
+                    mainWindow.webContents.send('sortAlgo', 'heapSort');
+                }
+            },
         ],
     },
 ];
@@ -173,10 +203,3 @@ const inputsWindowParams = {
     show: true,
     icon: path.join(__dirname, 'favicon.icn')
 };
-
-// take an input of array ans sorts them using insertion Sorting algorithm
-insertionSort = function () {
-    console.log("SRI in Insertion Sort");
-    // const { ipcRenderer } = electron;
-    mainWindow.webContents.send('sortAlgo', "Algos");
-}

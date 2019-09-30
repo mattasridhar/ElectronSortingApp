@@ -11,41 +11,42 @@
   </script>
   <meta charset="utf-8">
   <link type="text/css" rel="stylesheet" href="../assets/css/style.css" media="screen,projection" />
-  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a class="brand-logo center">Electron Sorting App</a>
-      <h1>Electron App</h1>
+      <img src="../assets/logos/logoIcon.png">
+      <h1 class="brand-logo center">Electron Sorting App</h1>
     </div>
   </nav>
+  <!-- Error message for incorrect input -->
   <div class="error-container" id="errorArea">
   </div>
 
+  <!-- Container for displaying the sorted values -->
   <div class="w3-container">
-
-    <h2>Dynamic Progress Bar with Labels</h2>
-    <p>Centered label:</p>
-
+    <h2>Sorted Input Values</h2>
+    <hr>
     <div class="w3-light-grey" id="dataBars">
       <!-- All the numerically sorted bars goes here -->
     </div>
-    <br>
-    <button class="btn-success" onclick="move(37)">Click Me</button>
+    <button class="btn" id="clearAll" hidden><i class="fa fa-eraser"></i> Clear Canvas</button>
   </div>
 
-  <div class="w3-container w3-red">
-    <h5>Footer</h5>
+  <div class="w3-container">
+    <ol type="i"></ol>
+  </div>
+
+  <div class="container footer">
     <p>
-      Set theme:
-      <button data-set-theme="dark">Dark</button>
-      <button data-set-theme="light">Light</button>
-      <button data-set-theme="light-dark-sidebar">Light (dark sidebar)</button>
+      <h5>Change Application Theme</h5>
+      <button data-set-theme="light" class="btn"><i class="fa fa-sticky-note-o"></i> Light Theme</button>
+      <button data-set-theme="dark" class="btn"><i class="fa fa-sticky-note"></i> Dark Theme</button>
     </p>
   </div>
-  <ul></ul>
+
   <script src="../src/sortValueDisplay.js"></script>
 
 </body>
