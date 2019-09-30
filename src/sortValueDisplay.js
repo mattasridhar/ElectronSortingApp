@@ -2,7 +2,7 @@ const electron = require('electron');
 const { ipcRenderer } = electron;//For sending values from this js page to the main.js page
 const $ = require('jquery');
 
-let sortAlgo = "heapSort";
+let sortAlgo = "insertionSort";
 let toBeSorted = "";
 //get the elements from the startUpWindow.html
 const ol = document.querySelector('ol');//get the ul from the startUpWindow.html
@@ -84,6 +84,9 @@ showErrorMessage = function (showError) {
     const errorText = document.createElement('h2');
     const errorMessage = document.createTextNode('In-correct input. Please provide Inputs again');
     if (showError) {
+        errorArea.innerHTML = "";
+        dataBarsArea.innerHTML = "";
+        ol.innerHTML = "";
         errorText.appendChild(errorMessage);
         errorArea.appendChild(errorText);
     } else {
@@ -106,7 +109,7 @@ function adjustBars(width) {
         } else {
             width++;
             inputBar.style.width = width + '%';
-            inputBar.innerHTML = width * 1 + '%';
+            inputBar.innerHTML = width * 1;
         }
     }
     dataBarsArea.appendChild(inputBar);
