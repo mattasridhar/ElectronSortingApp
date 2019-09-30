@@ -42,6 +42,7 @@ body {
 }
 
 .w3-container .w3-round-large{
+  color: var(--button-text-color);
   background: rgb(0, 217, 255);
 }
 
