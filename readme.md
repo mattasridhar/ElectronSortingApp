@@ -10,8 +10,12 @@ TABLE OF CONTENTS\
 
 
 INTRODUCTION\
-	This sorting desktop application is built using Electron and NodeJs.
+	This sorting desktop application is built using Electron and NodeJs. It takes a series of comma seperated positive numerical values and sorts them based on the selected sorting algorithm. The sorted values are then displayed in the form of bars with the sequence of iterations that took place.
 	<br><br>
+<b>Check out this video to see the demo.</b>
+
+[![](http://img.youtube.com/vi/gpdhFyLSzuI/0.jpg)](https://www.youtube.com/watch?v=gpdhFyLSzuI)
+<pre><i>If the above video doesn't seem to work, you can find the same clip of Demo at (~/readme_figs/DemoVideos/ElectronSortingDemo.mov) location.</i></pre>
 
 SPECIFICATIONS\
 	<pre>A desktop application that takes a series of comma seperated numerical values:</pre>
